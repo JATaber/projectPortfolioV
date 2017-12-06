@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/JATaber/projectPortfolioV/issues"
   },
-  "homepage": "https://github.com/JATaber/projectPortfolioV#readme"
+  "homepage": "https://github.com/JATaber/projectPortfolioV#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^7.2.1",
+    "browser-sync": "^2.18.13",
+    "gulp-postcss": "^7.0.0"
+  }
 }
