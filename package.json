@@ -1,0 +1,19 @@
+{
+  "name": "projectportfoliov",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mvc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JATaber/projectPortfolioV.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JATaber/projectPortfolioV/issues"
+  },
+  "homepage": "https://github.com/JATaber/projectPortfolioV#readme"
+}
