@@ -2,19 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Stock Image Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://use.fontawesome.com/008ebb0501.js"></script>
+    <script src="https://use.typekit.net/mte1nyr.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body>
-<header>
-
-</header>
-<section>
-
+<div class="headerBG">
+    <header>
+        <h1>Stock Photo Finder</h1>
+        <nav>
+            <i class="fa fa-camera-retro" aria-hidden="true"></i>
+            <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> HOME</a>
+            <a href="search.html"><i class="fa fa-search" aria-hidden="true"></i>  SEARCH</a>
+            <a href="contact.html"><i class="fa fa-envelope" aria-hidden="true"></i> CONTACT</a>
+        </nav>
+    </header>
+</div>
+<section class="searchForm">
+    <form class="searchForm">
+        <label for="input">Search for Images</label>
+        <div class="append">
+            <input type="text" id="input" placeholder="SEARCH" required>
+            <button type="submit" id="srchBtn" class="srchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+        <div id="userFeedback" aria-live="polite"></div>
+    </form>
 </section>
-<footer>
-    <p>Created By James Taber for PPV</p>
-</footer>
+<section id="results" class="results">
+    <h2 class="searchTitle">These images brought to you by ...</h2>
+    <section id="info" class="info">
+
+    </section>
+</section>
+<section id="results" class="results">
+    <h2 class="searchTitle">These images brought to you by ...</h2>
+    <section id="info" class="info">
+
+    </section>
+</section>
+<section id="results" class="results">
+    <h2 class="searchTitle">These images brought to you by ...</h2>
+    <section id="info" class="info">
+
+    </section>
+</section>
+<div class="footerBG">
+    <footer>
+        <p>Created By James Taber for PPV</p>
+    </footer>
+</div>
 <script src="javascript/mvc.js"></script>
 </body>
 </html>

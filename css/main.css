@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+html {
+  font-size: 62.5%; }
+
+.headerBG, .footerBG {
+  background-color: #0D0D0D; }
+
+header, footer {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #A6A6A6;
+  background-color: #0D0D0D; }
+  @media (min-width: 600px) {
+    header, footer {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto; } }
+  @media (min-width: 1200px) {
+    header, footer {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto; } }
+  header h1, footer h1 {
+    text-align: center; }
+
+footer {
+  text-align: center; }

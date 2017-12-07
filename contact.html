@@ -21,8 +21,23 @@
         </nav>
     </header>
 </div>
-<section class="srchItem" id="srchItem">
-
+<section>
+    <form class="contactFrm">
+        <h2>CONTACT US</h2>
+        <div class="frmGrp">
+            <label class="title" for="name">Name - <strong>required</strong></label>
+            <input class="input" type="text" id="name" required><label class="alertInfo" for="name"></label>
+        </div>
+        <div class="frmGrp">
+            <label class="title" for="email">Email - <strong>required</strong></label>
+            <input class="input" type="text" id="email" required><label class="alertInfo" for="email"></label>
+        </div>
+        <div class="frmGrp">
+            <label for="comments">Comments/Questions</label>
+            <textarea class="input" id="comments" rows="20"></textarea>
+        </div>
+        <button id="contactSubmit" class="subBtn" type="submit">SUBMIT</button>
+    </form>
 </section>
 <div class="footerBG">
     <footer>

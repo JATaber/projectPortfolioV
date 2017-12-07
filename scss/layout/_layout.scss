@@ -1,0 +1,44 @@
+@import '../helpers/_variables.scss';
+@import '../helpers/_mixins.scss';
+
+html{
+  font-size: 62.5%;
+}
+
+.headerBG{
+  background-color: $colorBlack;
+
+}
+
+.footerBG{
+  @extend .headerBG
+}
+
+header{
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  color: $colorLGrey;
+  background-color: $colorBlack;
+
+  @include mq(tablet){
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include mq(desktop){
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1{
+    text-align: center;
+  }
+}
+
+footer{
+  text-align: center;
+  @extend header
+}
