@@ -5,6 +5,9 @@
 html {
   font-size: 62.5%; }
 
+body {
+  background-color: #F2F2F2; }
+
 .headerBG, .footerBG {
   background-color: #0D0D0D; }
 
