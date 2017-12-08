@@ -91,7 +91,7 @@ class Model{
         let request = new XMLHttpRequest();
 
         //this variable stores the API link
-        let pixaAPI = 'https://pixabay.com/api/?key='+ k +'&q='+ q +'&image_type=photo&per_page=9';
+        let pixaAPI = 'https://pixabay.com/api/?key='+ k +'&q='+ q +'&image_type=photo&per_page=12';
 
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
@@ -129,7 +129,7 @@ class Model{
 
         let request = new XMLHttpRequest();
 
-        let unsplashAPI = 'https://api.unsplash.com/search/photos?client_id='+ k +'&query='+ q +'&per_page=9';
+        let unsplashAPI = 'https://api.unsplash.com/search/photos?client_id='+ k +'&query='+ q +'&per_page=12';
 
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
@@ -165,7 +165,7 @@ class Model{
 
         let request = new XMLHttpRequest();
 
-        let flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+ k +'&tags='+ q +'&per_page=9&format=json&nojsoncallback=1';
+        let flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+ k +'&tags='+ q +'&per_page=12&format=json&nojsoncallback=1';
 
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
@@ -176,6 +176,14 @@ class Model{
                 localStorage.setItem('flickr', JSON.stringify(data.photos.photo));
 
                 console.log(JSON.parse(localStorage.flickr));
+
+                //this creates a new event
+                let flickrEvent = new Event('flickrLoaded');
+                //this stores the information inside of the event
+                flickrEvent.info = JSON.parse(localStorage.flickr);
+
+                //this fires the event off for the listener to pick up
+                document.dispatchEvent(flickrEvent);
             }else{
                 console.log('response error');
             }
@@ -200,7 +208,7 @@ class View{
         //this listens for the custom event that is dispatched after the Pixabay search
         document.addEventListener('pixaLoaded', this.displayPixaInfo.bind(this));
         document.addEventListener('unsplashLoaded', this.displayUnsplashInfo.bind(this));
-
+        document.addEventListener('flickrLoaded', this.displayFlickrInfo.bind(this));
     }
 
     displayPixaInfo(e){
@@ -211,21 +219,25 @@ class View{
         this.displayUnsplash(e.info);
     }
 
+    displayFlickrInfo(e){
+        this.displayFlickr(e.info);
+    }
+
     displayPixa(arr){
         //console.log(arr);
 
         let pixaArr = arr;
 
+        let image = document.querySelector('#pixaResults');
+
+        //empty variable to add to the DOM with
+        let display = '';
+
+        //clears the innerHTML of the element each time a search is conducted
+        image.innerHTML='';
+
         //make sure the element is there before running any code
         if(document.getElementById('pixaResults')){
-
-            let image = document.querySelector('#pixaResults');
-
-            //empty variable to add to the DOM with
-            let display = '';
-
-            //clears the innerHTML of the element each time a search is conducted
-            image.innerHTML='';
 
             //checks to see if anything is stored in the array
             if(pixaArr.length > 0){
@@ -254,14 +266,14 @@ class View{
     displayUnsplash(arr){
         let unsplashArr = arr;
 
+        let image = document.querySelector('#unsplashResults');
+
+        let display = '';
+
+        image.innerHTML = '';
+
         //makes sure the element is there before running any code
         if(document.getElementById('unsplashResults')){
-
-            let image = document.querySelector('#unsplashResults');
-
-            let display = '';
-
-            image.innerHTML = '';
 
             if(unsplashArr.length > 0){
 
@@ -287,5 +299,65 @@ class View{
 
     displayFlickr(arr){
 
+        let flickrArr = arr;
+
+        //console.log(flickrArr);
+
+        let image = document.querySelector('#flickrResults');
+
+        let displayF = '';
+
+        //makes sure the element is there before running any code
+        if(document.getElementById('flickrResults')){
+
+            image.innerHTML = '';
+
+            for(let i=0;i<flickrArr.length;i++){
+                //flickr API calls for you to do another API call to get details of the image from their server
+                let request = new XMLHttpRequest();
+
+                let flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=dd2d576f4c18d465c6c6bb10542e376d&photo_id='+ flickrArr[i].id +'&format=json&nojsoncallback=1';
+
+                request.onload = function() {
+                    if (request.status >= 200 && request.status < 400) {
+                        //this variable captures the API response and stores it
+                        let data = JSON.parse(request.responseText);
+
+
+                        //this saves it to localStorage so it can be used later to print to the DOM
+                        localStorage.setItem('imageData', JSON.stringify(data.photo));
+
+                        console.log(JSON.parse(localStorage.imageData));
+
+                    }else{
+                        console.log('response error');
+                    }
+
+                    request.onerror = function(){
+                        console.log('connection error');
+                    }
+                };
+
+                request.open('GET', flickrAPI, true);
+                request.send();
+
+                let imageInfo = JSON.parse(localStorage.imageData);
+
+                displayF += '<article>';
+                displayF += '<a href="'+ imageInfo.urls.url[0]._content +'" target="_blank">';
+                displayF += '<img class="imgResult" src="https://farm'+ flickrArr[i].farm +'.staticflickr.com/'+ flickrArr[i].server +'/'+ flickrArr[i].id +'_'+ flickrArr[i].secret +'_c.jpg" alt="Flickr Image">';
+                displayF += '<div class="picInfo">';
+                displayF += '<h3><i class="fa fa-user" aria-hidden="true"></i> '+ imageInfo.owner.username +'</h3>';
+                displayF += '<h3><i class="fa fa-heart" aria-hidden="true"></i> '+ imageInfo.isfavorite +'</h3>';
+                displayF += '<h3>TAGS/DESCRITPION: '+ flickrArr[i].title +'</h3>';
+                displayF += '</div>';
+                displayF += '</a>';
+                displayF += '</article>';
+            }
+        }else{
+            displayF += '<p>Oops looks like something went wrong!</p>';
+        }
+
+        image.insertAdjacentHTML('afterbegin', displayF);
     }
 }
