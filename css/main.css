@@ -12,11 +12,14 @@ body {
 .headerBG, .footerBG {
   background-color: #0D0D0D; }
 
+.footerBG {
+  height: 100px; }
+
 header, footer {
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
-  color: #A6A6A6;
+  color: #F2F2F2;
   background-color: #0D0D0D; }
   @media (min-width: 600px) {
     header, footer {
@@ -30,7 +33,90 @@ header, footer {
       margin-right: auto; } }
   header h1, footer h1 {
     text-align: center;
-    font-size: 32px; }
+    font-size: 52px; }
+  header nav .fa-camera-retro, footer nav .fa-camera-retro {
+    font-size: 50px; }
+  header nav a, footer nav a {
+    font-size: 25px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #F2F2F2; }
+  header nav a:hover, footer nav a:hover {
+    color: #737373; }
+
+.main h2 {
+  font-size: 52px;
+  text-align: center;
+  background-color: #F2F2F2;
+  padding: 20px 0; }
+
+.main .about, .main .search, .main .contact, .main .welcome {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 22px;
+  margin-bottom: 10px;
+  background-color: #737373;
+  color: #A6A6A6; }
+  .main .about h3, .main .search h3, .main .contact h3, .main .welcome h3 {
+    font-size: 30px;
+    color: #262626; }
+  @media (min-width: 600px) {
+    .main .about, .main .search, .main .contact, .main .welcome {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto; } }
+  @media (min-width: 1200px) {
+    .main .about, .main .search, .main .contact, .main .welcome {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto; } }
+
+.main .welcome .aboutImage {
+  width: 100%;
+  height: 150px;
+  background-image: url(/images/about.jpeg);
+  background-size: cover; }
+
+.main .searchImage {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 150px;
+  background-image: url(/images/search.jpeg);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px; }
+  @media (min-width: 600px) {
+    .main .searchImage {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto; } }
+  @media (min-width: 1200px) {
+    .main .searchImage {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto; } }
+
+.main .contactImage {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 150px;
+  background-image: url(/images/contact.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px; }
+  @media (min-width: 600px) {
+    .main .contactImage {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto; } }
+  @media (min-width: 1200px) {
+    .main .contactImage {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto; } }
 
 .searchFormSec {
   max-width: 300px;
@@ -46,6 +132,38 @@ header, footer {
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto; } }
+  .searchFormSec .searchForm {
+    width: 100%;
+    margin: 2rem auto;
+    font-size: 30px;
+    text-align: center; }
+    .searchFormSec .searchForm input[type=text] {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      height: 5rem;
+      font-size: 12px;
+      width: 80%;
+      border: none; }
+      @media (min-width: 600px) {
+        .searchFormSec .searchForm input[type=text] {
+          font-size: 16px; } }
+      @media (min-width: 1200px) {
+        .searchFormSec .searchForm input[type=text] {
+          font-size: 30px; } }
+    .searchFormSec .searchForm .append {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+      .searchFormSec .searchForm .append .srchBtn {
+        width: 5rem;
+        font-size: 3rem;
+        border: none;
+        background-color: #262626;
+        color: #F2F2F2; }
+      .searchFormSec .searchForm .append .srchBtn:hover {
+        background-color: #A6A6A6;
+        color: #0D0D0D; }
 
 .resultsWrap {
   max-width: 300px;
@@ -106,3 +224,6 @@ header, footer {
 
 footer {
   text-align: center; }
+  footer p {
+    padding-top: 35px;
+    font-size: 18px; }

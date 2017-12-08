@@ -16,6 +16,7 @@ body{
 }
 
 .footerBG{
+  height: 100px;
   @extend .headerBG
 }
 
@@ -23,7 +24,7 @@ header{
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
-  color: $colorLGrey;
+  color: $colorWhite;
   background-color: $colorBlack;
 
   @include mq(tablet){
@@ -40,7 +41,127 @@ header{
 
   h1{
     text-align: center;
-    font-size: 32px;
+    font-size: 52px;
+  }
+
+  nav{
+    .fa-camera-retro{
+      font-size: 50px;
+    }
+
+    a{
+      font-size: 25px;
+      margin-right: 10px;
+      text-decoration: none;
+      color: $colorWhite;
+    }
+
+    a:hover{
+      color: $colorDGrey;
+    }
+  }
+}
+
+.main{
+  h2{
+    font-size: 52px;
+    text-align: center;
+    background-color: $colorWhite;
+    padding: 20px 0;
+  }
+
+  .about{
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 22px;
+    margin-bottom: 10px;
+    background-color: $colorDGrey;
+    color: $colorLGrey;
+
+    h3{
+      font-size: 30px;
+      color: $colorLBlack;
+    }
+
+    @include mq(tablet){
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include mq(desktop){
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .search{
+    @extend .about
+  }
+
+  .contact{
+    @extend .about
+  }
+
+  .welcome{
+    @extend .about
+  }
+
+  .welcome{
+    .aboutImage{
+      width: 100%;
+      height: 150px;
+      background-image: url(/images/about.jpeg);
+      background-size: cover;
+    }
+  }
+
+  .searchImage{
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    background-image: url(/images/search.jpeg);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+
+    @include mq(tablet){
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include mq(desktop){
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .contactImage{
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    background-image: url(/images/contact.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+
+    @include mq(tablet){
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include mq(desktop){
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
 
@@ -59,6 +180,46 @@ header{
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .searchForm{
+    width: 100%;
+    margin: 2rem auto;
+    font-size: 30px;
+    text-align: center;
+
+    input[type=text]{
+      flex:1;
+      height: 5rem;
+      font-size: 12px;
+      width: 80%;
+      border: none;
+
+      @include mq(tablet){
+        font-size: 16px;
+      }
+
+      @include mq(desktop){
+        font-size: 30px;
+      }
+    }
+
+    .append{
+      display: flex;
+
+      .srchBtn{
+        width: 5rem;
+        font-size: 3rem;
+        border: none;
+        background-color: $colorLBlack;
+        color: $colorWhite;
+      }
+
+      .srchBtn:hover{
+        background-color: $colorLGrey;
+        color: $colorBlack;
+      }
+    }
   }
 }
 
@@ -123,5 +284,12 @@ header{
 
 footer{
   text-align: center;
+
+  p{
+    padding-top: 35px;
+    font-size: 18px;
+
+  }
+
   @extend header
 }
