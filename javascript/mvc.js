@@ -71,6 +71,8 @@ class Controller{
             //this is to do the flickr search
             this.model.flickrSearch(query, flickrKey);
 
+            searchInput.value = '';
+
         });
     }
 }
@@ -301,8 +303,6 @@ class View{
 
         let flickrArr = arr;
 
-        //console.log(flickrArr);
-
         let image = document.querySelector('#flickrResults');
 
         let displayF = '';
@@ -316,18 +316,19 @@ class View{
                 //flickr API calls for you to do another API call to get details of the image from their server
                 let request = new XMLHttpRequest();
 
-                let flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=dd2d576f4c18d465c6c6bb10542e376d&photo_id='+ flickrArr[i].id +'&format=json&nojsoncallback=1';
+                let flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=16ba76a5c786f17852944ad94929385a&photo_id='+ flickrArr[i].id +'&format=json&nojsoncallback=1';
 
                 request.onload = function() {
                     if (request.status >= 200 && request.status < 400) {
                         //this variable captures the API response and stores it
                         let data = JSON.parse(request.responseText);
 
+                        //console.log(data);
 
                         //this saves it to localStorage so it can be used later to print to the DOM
                         localStorage.setItem('imageData', JSON.stringify(data.photo));
 
-                        console.log(JSON.parse(localStorage.imageData));
+                        //console.log(JSON.parse(localStorage.imageData));
 
                     }else{
                         console.log('response error');
@@ -344,7 +345,7 @@ class View{
                 let imageInfo = JSON.parse(localStorage.imageData);
 
                 displayF += '<article>';
-                displayF += '<a href="'+ imageInfo.urls.url[0]._content +'" target="_blank">';
+                displayF += '<a href="https://www.flickr.com/photos/'+ flickrArr[i].owner +'/'+ flickrArr[i].id +'" target="_blank">';
                 displayF += '<img class="imgResult" src="https://farm'+ flickrArr[i].farm +'.staticflickr.com/'+ flickrArr[i].server +'/'+ flickrArr[i].id +'_'+ flickrArr[i].secret +'_c.jpg" alt="Flickr Image">';
                 displayF += '<div class="picInfo">';
                 displayF += '<h3><i class="fa fa-user" aria-hidden="true"></i> '+ imageInfo.owner.username +'</h3>';

@@ -46,14 +46,22 @@ header{
 
   nav{
     .fa-camera-retro{
-      font-size: 50px;
+      font-size: 30px;
+
+      @include mq(tablet){
+        font-size: 50px;
+      }
     }
 
     a{
-      font-size: 25px;
+      font-size: 15px;
       margin-right: 10px;
       text-decoration: none;
       color: $colorWhite;
+
+      @include mq(tablet){
+        font-size: 25px;
+      }
     }
 
     a:hover{
@@ -79,9 +87,14 @@ header{
     background-color: $colorDGrey;
     color: $colorLGrey;
 
+    p{
+      padding: 10px;
+    }
+
     h3{
       font-size: 30px;
       color: $colorLBlack;
+      padding: 10px;
     }
 
     @include mq(tablet){
@@ -228,6 +241,16 @@ header{
   margin-left: auto;
   margin-right: auto;
 
+  h2{
+    background-color: $colorLGrey;
+    padding: 10px;
+    font-size: 14px;
+
+    @include mq(tablet){
+      font-size: 25px;
+    }
+  }
+
   @include mq(tablet){
     max-width: 600px;
     margin-left: auto;
@@ -241,12 +264,22 @@ header{
   }
 }
 
+%ellipsis{
+  overflow: hidden;
+  //white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .results{
   display: flex;
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+
+  a{
+    text-decoration: none;
+  }
 
   h2{
     justify-content: space-around;
@@ -280,6 +313,154 @@ header{
       max-width: calc(33% - 2.2rem);
     }
   }
+
+  article:hover{
+    .picInfo{
+      @include mq(desktop){
+        max-height: 100%;
+        display: block;
+      }
+    }
+  }
+}
+
+.picInfo{
+  @extend %ellipsis;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 10px 10px 0 10px;
+  background-color: $colorLBlack;
+  color: $colorLGrey;
+  max-height: 120px;
+  font-size: 12px;
+
+
+  *{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  @include mq(tablet){
+    //margin: 0;
+  }
+
+  @include mq(desktop){
+    white-space: normal;
+    display: none;
+    max-height: 0;
+    opacity: 0.75;
+    transition:  2s linear, max-height 1.5s ease-in-out;
+  }
+
+}
+
+.contact{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+
+  h2{
+    font-size: 30px;
+    text-align: center;
+  }
+
+  @include mq(tablet){
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    h2{
+      font-size: 40px;
+    }
+  }
+
+  @include mq(desktop){
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.contactFrm{
+  background-color: $colorLGrey;
+  padding: 10px;
+  max-width: 300px;
+  position: relative;
+
+  @include mq(tablet) {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input{
+    width: calc(100% - 20px);
+    font-size: 20px;
+
+    @include mq(tablet){
+      width: 100%;
+      font-size: 20px;
+    }
+  }
+
+  textarea{
+    resize: none;
+    @extend input
+  }
+
+  label{
+    font-size: 20px;
+  }
+
+  .frmGrp {
+    padding-top: 10px;
+    width: 300px;
+  }
+}
+
+.subBtn{
+  width: 100%;
+  font-size: 20px;
+}
+
+.subBtn:hover{
+  background-color: $colorDGrey;
+  color: $colorWhite;
+}
+
+.error{
+  color: red;
+}
+
+.alert{
+  position: absolute;
+  display: none;
+  background-color: $colorLGrey;
+  height: 760px;
+  width: 300px;
+  text-align: center;
+  font-size: 16px;
+
+  .fa-check-square-o{
+    margin-top: 300px;
+    font-size: 40px;
+  }
+
+  @include mq(tablet){
+    width: 320px;
+    height: 780px;
+  }
+}
+
+.show{
+  display: block;
 }
 
 footer{

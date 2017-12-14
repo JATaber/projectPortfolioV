@@ -35,12 +35,18 @@ header, footer {
     text-align: center;
     font-size: 52px; }
   header nav .fa-camera-retro, footer nav .fa-camera-retro {
-    font-size: 50px; }
+    font-size: 30px; }
+    @media (min-width: 600px) {
+      header nav .fa-camera-retro, footer nav .fa-camera-retro {
+        font-size: 50px; } }
   header nav a, footer nav a {
-    font-size: 25px;
+    font-size: 15px;
     margin-right: 10px;
     text-decoration: none;
     color: #F2F2F2; }
+    @media (min-width: 600px) {
+      header nav a, footer nav a {
+        font-size: 25px; } }
   header nav a:hover, footer nav a:hover {
     color: #737373; }
 
@@ -58,9 +64,12 @@ header, footer {
   margin-bottom: 10px;
   background-color: #737373;
   color: #A6A6A6; }
+  .main .about p, .main .search p, .main .contact p, .main .welcome p {
+    padding: 10px; }
   .main .about h3, .main .search h3, .main .contact h3, .main .welcome h3 {
     font-size: 30px;
-    color: #262626; }
+    color: #262626;
+    padding: 10px; }
   @media (min-width: 600px) {
     .main .about, .main .search, .main .contact, .main .welcome {
       max-width: 600px;
@@ -137,7 +146,7 @@ header, footer {
     margin: 2rem auto;
     font-size: 30px;
     text-align: center; }
-    .searchFormSec .searchForm input[type=text] {
+    .searchFormSec .searchForm input[type=text], .searchFormSec .searchForm .contactFrm textarea[type=text], .contactFrm .searchFormSec .searchForm textarea[type=text] {
       -webkit-box-flex: 1;
           -ms-flex: 1;
               flex: 1;
@@ -146,10 +155,10 @@ header, footer {
       width: 80%;
       border: none; }
       @media (min-width: 600px) {
-        .searchFormSec .searchForm input[type=text] {
+        .searchFormSec .searchForm input[type=text], .searchFormSec .searchForm .contactFrm textarea[type=text], .contactFrm .searchFormSec .searchForm textarea[type=text] {
           font-size: 16px; } }
       @media (min-width: 1200px) {
-        .searchFormSec .searchForm input[type=text] {
+        .searchFormSec .searchForm input[type=text], .searchFormSec .searchForm .contactFrm textarea[type=text], .contactFrm .searchFormSec .searchForm textarea[type=text] {
           font-size: 30px; } }
     .searchFormSec .searchForm .append {
       display: -webkit-box;
@@ -169,6 +178,13 @@ header, footer {
   max-width: 300px;
   margin-left: auto;
   margin-right: auto; }
+  .resultsWrap h2 {
+    background-color: #A6A6A6;
+    padding: 10px;
+    font-size: 14px; }
+    @media (min-width: 600px) {
+      .resultsWrap h2 {
+        font-size: 25px; } }
   @media (min-width: 600px) {
     .resultsWrap {
       max-width: 600px;
@@ -179,6 +195,10 @@ header, footer {
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto; } }
+
+.picInfo {
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .results {
   display: -webkit-box;
@@ -192,6 +212,8 @@ header, footer {
           justify-content: center;
   -ms-flex-line-pack: center;
       align-content: center; }
+  .results a {
+    text-decoration: none; }
   .results h2 {
     -ms-flex-pack: distribute;
         justify-content: space-around; }
@@ -221,6 +243,120 @@ header, footer {
     @media (min-width: 1200px) {
       .results article {
         max-width: calc(33% - 2.2rem); } }
+  @media (min-width: 1200px) {
+    .results article:hover .picInfo {
+      max-height: 100%;
+      display: block; } }
+
+.picInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  padding: 10px 10px 0 10px;
+  background-color: #262626;
+  color: #A6A6A6;
+  max-height: 120px;
+  font-size: 12px; }
+  .picInfo * {
+    margin-top: auto;
+    margin-bottom: auto; }
+  @media (min-width: 1200px) {
+    .picInfo {
+      white-space: normal;
+      display: none;
+      max-height: 0;
+      opacity: 0.75;
+      -webkit-transition: 2s linear, max-height 1.5s ease-in-out;
+      transition: 2s linear, max-height 1.5s ease-in-out; } }
+
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 100px; }
+  .contact h2 {
+    font-size: 30px;
+    text-align: center; }
+  @media (min-width: 600px) {
+    .contact {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto; }
+      .contact h2 {
+        font-size: 40px; } }
+  @media (min-width: 1200px) {
+    .contact {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto; } }
+
+.contactFrm {
+  background-color: #A6A6A6;
+  padding: 10px;
+  max-width: 300px;
+  position: relative; }
+  @media (min-width: 600px) {
+    .contactFrm {
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto; } }
+  .contactFrm input, .contactFrm textarea {
+    width: calc(100% - 20px);
+    font-size: 20px; }
+    @media (min-width: 600px) {
+      .contactFrm input, .contactFrm textarea {
+        width: 100%;
+        font-size: 20px; } }
+  .contactFrm textarea {
+    resize: none; }
+  .contactFrm label {
+    font-size: 20px; }
+  .contactFrm .frmGrp {
+    padding-top: 10px;
+    width: 300px; }
+
+.subBtn {
+  width: 100%;
+  font-size: 20px; }
+
+.subBtn:hover {
+  background-color: #737373;
+  color: #F2F2F2; }
+
+.error {
+  color: red; }
+
+.alert {
+  position: absolute;
+  display: none;
+  background-color: #A6A6A6;
+  height: 760px;
+  width: 300px;
+  text-align: center;
+  font-size: 16px; }
+  .alert .fa-check-square-o {
+    margin-top: 300px;
+    font-size: 40px; }
+  @media (min-width: 600px) {
+    .alert {
+      width: 320px;
+      height: 780px; } }
+
+.show {
+  display: block; }
 
 footer {
   text-align: center; }
